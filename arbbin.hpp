@@ -18,6 +18,10 @@ private:
   };
 
   node *_arrel;
+  nat _size;
+
+  void _delete(node *n) throw();
+  node* _copy(node *n) throw(error);
 
 public:
 
@@ -54,7 +58,7 @@ public:
 
   arbbin(const arbbin& a) throw(error);
   arbbin& operator=(const arbbin& a) throw(error);
-  // ~arbbin() throw();
+  ~arbbin() throw();
 
   nat size() const throw();
 
