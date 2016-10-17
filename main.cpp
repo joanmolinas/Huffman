@@ -13,9 +13,9 @@ int main() {
   arbbin<int> arbre1(9, arbre3, arbre4);
   arbbin<int> arbre0(11, arbre1, arbre2);
 
-  cout<<(*arbre0.arrel().fill_esq())<<endl;
+  /*cout<<(*arbre0.arrel().fill_esq())<<endl;
   cout<<(*arbre0.arrel())<<endl;
-  cout<<(*arbre0.arrel().fill_dret())<<endl;
+  cout<<(*arbre0.arrel().fill_dret())<<endl;*/
   arbre0.print(arbre0.arrel(), 0);
   cout<<arbre0.size()<<endl;
 
