@@ -11,7 +11,6 @@ arbbin<Elem>::arbbin(const Elem &x, const arbbin &fesq, const arbbin &fdret) thr
     throw;
   }
 
-  //Copiar els arbres passats per referència.
   if (_arrel->f_esq != NULL) _arrel->f_esq = _copy(fesq._arrel);
   if (_arrel->f_dret != NULL) _arrel->f_dret = _copy(fdret._arrel);
   _size = fesq.size() + fdret.size() + 1;
@@ -33,6 +32,17 @@ arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
   //borrari
   //Intentar copiar
     // Si algo pasa malament, restaurar.
+    arbbin<Elem> aux(this);
+    try {
+      _delete(_arrel);
+      _copy(a._arrel);
+      _size = a.size();
+    } catch {
+      _delete(this);
+      _arrel = aux._arrel;
+      _size = aux.size();
+      throw;
+    }
 }
 
 template <typename Elem>
