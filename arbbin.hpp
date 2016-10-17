@@ -64,7 +64,7 @@ public:
 
   iterador arrel() const throw();
 
-  void print(iterador it, int indent);
+  //void print(iterador it, int indent);
 };
 #include "arbbin.t"
 #endif

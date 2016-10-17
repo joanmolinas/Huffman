@@ -33,17 +33,20 @@ arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
   //borrari
   //Intentar copiar
     // Si algo pasa malament, restaurar.
-    arbbin<Elem> aux(this);
-    try {
-      _delete(_arrel);
-      _copy(a._arrel);
-      _size = a.size();
-    } catch {
-      _delete(this);
-      _arrel = aux._arrel;
-      _size = aux.size();
-      throw;
-    }
+	if (_arrel != a._arrel) {
+		arbbin<Elem> aux(*this);
+		try {
+		  _delete(_arrel);
+		  _arrel = _copy(a._arrel);
+		  _size = a.size();
+		} catch(...) {
+		  //_delete(this._arrel);
+		  //_arrel = aux._arrel;
+		  //_size = aux.size();
+		  throw;
+		}
+	}
+	return *this;
 }
 
 template <typename Elem>
@@ -65,7 +68,7 @@ nat arbbin<Elem>::size() const throw() {
   return _size;
 }
 
-template <typename Elem>
+/*template <typename Elem>
 void arbbin<Elem>::print(iterador it, int indent) {
   if (it) {
     if (it.fill_dret()) print(it.fill_dret(), indent+4);
@@ -78,7 +81,7 @@ void arbbin<Elem>::print(iterador it, int indent) {
        print(it.fill_esq(), indent+4);
     }
   }
-}
+}*/
 
 //ARBBIN PRIVATE
 template <typename Elem>
@@ -116,13 +119,15 @@ arbbin<Elem>::iterador::iterador() throw(error) : _n(NULL) {}
 
 template <typename Elem>
 arbbin<Elem>::iterador::iterador(const iterador &it) throw(error) {
-  //Implementar
-	_n = it._arrel;
+	_n = it._n;
 }
 
 template <typename Elem>
 typename arbbin<Elem>::iterador& arbbin<Elem>::iterador::operator=(const iterador &it) throw(error){
-  //Implementar
+	if (_n != it._n)  {
+		_n = it._n;
+	}
+	return *this;
 }
 
 template <typename Elem>
