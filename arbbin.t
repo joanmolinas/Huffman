@@ -10,8 +10,10 @@ arbbin<Elem>::arbbin(const Elem &x, const arbbin &fesq, const arbbin &fdret) thr
     delete _arrel;
     throw;
   }
-  _arrel->f_esq = fesq._arrel;
-  _arrel->f_dret = fdret._arrel;
+
+  //Copiar els arbres passats per referència.
+  if (_arrel->f_esq != NULL) _arrel->f_esq = _copy(fesq._arrel);
+  if (_arrel->f_dret != NULL) _arrel->f_dret = _copy(fdret._arrel);
   _size = fesq.size() + fdret.size() + 1;
 
 }
