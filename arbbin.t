@@ -12,8 +12,8 @@ arbbin<Elem>::arbbin(const Elem &x, const arbbin &fesq, const arbbin &fdret) thr
   }
 
   //Copiar els arbres passats per referència.
-  if (_arrel->f_esq != NULL) _arrel->f_esq = _copy(fesq._arrel);
-  if (_arrel->f_dret != NULL) _arrel->f_dret = _copy(fdret._arrel);
+  if (fesq._arrel != NULL) _arrel->f_esq = _copy(fesq._arrel);
+  if (fdret._arrel != NULL) _arrel->f_dret = _copy(fdret._arrel);
   _size = fesq.size() + fdret.size() + 1;
 
 }
@@ -38,13 +38,7 @@ arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
 template <typename Elem>
 arbbin<Elem>::~arbbin() throw() {
   // delete _arrel;
-  if (_arrel != NULL) {
-    cout<<"Borrant node "<<_arrel->info<<" "<<_arrel<<endl;
-  }
-  // _delete(_arrel);
-  // cout<<"\n"<<endl;
-  delete _arrel;
-  _arrel = NULL;
+  _delete(_arrel);
 }
 
 template <typename Elem>
@@ -79,11 +73,11 @@ void arbbin<Elem>::print(iterador it, int indent) {
 template <typename Elem>
 void arbbin<Elem>::_delete(node *n) throw() {
   if (n != NULL) {
-    if (n->f_dret != NULL) cout<<"borrem fill dret "<<n->f_dret->info<<endl;
+    //if (n->f_dret != NULL) cout<<"borrem fill dret "<<n->f_dret->info<<endl;
     _delete(n->f_dret);
-    if (n->f_esq != NULL) cout<<"borrem fill esquerra "<<n->f_esq->info<<endl;
+    //if (n->f_esq != NULL) cout<<"borrem fill esquerra "<<n->f_esq->info<<endl;
     _delete(n->f_esq);
-    cout<<"Borrem "<<n->info<<endl;
+    //cout<<"Borrem "<<n->info<<endl;
     delete n;
     n = NULL;
 
@@ -112,6 +106,7 @@ arbbin<Elem>::iterador::iterador() throw(error) : _n(NULL) {}
 template <typename Elem>
 arbbin<Elem>::iterador::iterador(const iterador &it) throw(error) {
   //Implementar
+	_n = it._arrel;
 }
 
 template <typename Elem>
@@ -120,9 +115,7 @@ typename arbbin<Elem>::iterador& arbbin<Elem>::iterador::operator=(const iterado
 }
 
 template <typename Elem>
-arbbin<Elem>::iterador::~iterador() throw() {
-  //Implementar
-}
+arbbin<Elem>::iterador::~iterador() throw()  {}
 
 template <typename Elem>
 Elem arbbin<Elem>::iterador::operator*() const throw(error) {
