@@ -223,13 +223,14 @@ void tracta_insereix_v(gen_driver& dr){
 
 //////////////////////////huffman/////////////////////////
 
-/*void tracta_huffman(gen_driver& dr){
+void tracta_huffman(gen_driver& dr){
   Vector_nat S = dr.object<vector<nat> >(dr.args(1));
   vector<string> taula_codis;
 
   huffman::codi_huffman(*S, taula_codis);
   imprimeix_vector(taula_codis,' ',dr.get_ostream());
-}*/
+}
+
 /*void tracta_codifica(gen_driver& dr) {
   Vector_nat S = dr.object<vector<nat> >(1);
   Vector_string C = dr.object<vector<string> >(2);
@@ -262,14 +263,14 @@ int main() {
 	     "[<arbbin<int>>] (p)rint_(a)rbbin"); 
 
   //vector<nat>, vector<string>
-  /*d.add_call("insereix_v", tracta_insereix_v, "*");
+  d.add_call("insereix_v", tracta_insereix_v, "*");
   d.add_call("iv", tracta_insereix_v, "*");
 
   //huffman
   d.add_call("huffman", tracta_huffman, "*", "vector<nat>",
 	     "(huff)man <vector<nat>");
   d.add_call("huf", tracta_huffman, "*", "vector<nat>",
-	     "(huff)man <vector<nat>");*/
+	     "(huff)man <vector<nat>");
 
   //d.add_call("codifica", tracta_codifica, "*", "vector<string>");
   //d.add_call("c", tracta_codifica, "*", "vector<string>");

@@ -29,24 +29,26 @@ arbbin<Elem>::arbbin(const arbbin &a) throw(error) {
 template <typename Elem>
 arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
 	if (_arrel != a._arrel) {
-		arbbin<Elem> aux(*this);
+		_delete(_arrel);
+		_arrel = _copy(a._arrel);
+		_size = a.size();
+		/*arbbin<Elem> aux(*this);
 		try {
 		  _delete(_arrel);
 		  _arrel = _copy(a._arrel);
 		  _size = a.size();
 		} catch(...) {
-		  _delete(this._arrel);
+		  _delete(_arrel);
 		  _arrel = aux._arrel;
 		  _size = aux.size();
 		  throw;
-		}
+		}*/
 	}
 	return *this;
 }
 
 template <typename Elem>
 arbbin<Elem>::~arbbin() throw() {
-  // delete _arrel;
   _delete(_arrel);
 }
 
