@@ -28,11 +28,6 @@ arbbin<Elem>::arbbin(const arbbin &a) throw(error) {
 
 template <typename Elem>
 arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
-  //Implementar
-  //Guardar una copia del arbre des de _arrel
-  //borrari
-  //Intentar copiar
-    // Si algo pasa malament, restaurar.
 	if (_arrel != a._arrel) {
 		arbbin<Elem> aux(*this);
 		try {
@@ -40,9 +35,9 @@ arbbin<Elem>& arbbin<Elem>::operator=(const arbbin &a) throw(error) {
 		  _arrel = _copy(a._arrel);
 		  _size = a.size();
 		} catch(...) {
-		  //_delete(this._arrel);
-		  //_arrel = aux._arrel;
-		  //_size = aux.size();
+		  _delete(this._arrel);
+		  _arrel = aux._arrel;
+		  _size = aux.size();
 		  throw;
 		}
 	}
@@ -87,11 +82,8 @@ void arbbin<Elem>::print(iterador it, int indent) {
 template <typename Elem>
 void arbbin<Elem>::_delete(node *n) throw() {
   if (n != NULL) {
-    //if (n->f_dret != NULL) cout<<"borrem fill dret "<<n->f_dret->info<<endl;
     _delete(n->f_dret);
-    //if (n->f_esq != NULL) cout<<"borrem fill esquerra "<<n->f_esq->info<<endl;
     _delete(n->f_esq);
-    //cout<<"Borrem "<<n->info<<endl;
     delete n;
     n = NULL;
 
