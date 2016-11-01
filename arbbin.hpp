@@ -2,6 +2,7 @@
 #define _ARBBIN_HPP_
 
 #include <iostream>
+#include <iomanip> 
 #include <esin/error>
 #include <esin/util>
 

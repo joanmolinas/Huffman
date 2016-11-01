@@ -2,42 +2,79 @@
 void huffman::codi_huffman(const vector<nat>& seq, vector<string>& taula_codis) throw(error) {
 	if (seq.size() < 2) throw error(SeqCurta);
 	vector<elem> freqs = frequencies(seq);
-	print(freqs);
-	vector<arbre> arbre_freqs;
-	
-	nat idx = 1;
-	while (idx < freqs.size()) {
-		//ferho per inparells
-		arbre esq, dret;
-		nat n = 0, reps = 0;	
-		if (freqs[idx-1].second < freqs[idx].second) {
-			esq = arbre(freqs[idx-1], arbre(), arbre());
-			dret = arbre(freqs[idx], arbre(), arbre());
-			n = freqs[idx-1].first;
-		} else if (freqs[idx-1].second == freqs[idx].second) {
-			if (freqs[idx-1].first < freqs[idx].first) {
-				esq = arbre(freqs[idx-1], arbre(), arbre());
-				dret = arbre(freqs[idx], arbre(), arbre());
-			} else {
-				dret = arbre(freqs[idx-1], arbre(), arbre());
-				esq = arbre(freqs[idx], arbre(), arbre());
-			}
-			n = min(freqs[idx-1].first, freqs[idx].first);
-		} else {
-			dret = arbre(freqs[idx-1], arbre(), arbre());
-			esq = arbre(freqs[idx], arbre(), arbre());	
-			n = freqs[idx].first;
-		}
-		
-		reps = freqs[idx-1].second+freqs[idx].second;
-		elem elem = crear_pair(n, reps);
-		
-		arbre a(elem, esq, dret);
-		cout<<"arrel -> "<<(*a.arrel()).first<<" ";
-		cout<<"fe -> "<<(*a.arrel().fill_esq()).first<<" ";
-		cout<<"fd -> "<<(*a.arrel().fill_dret()).first<<endl;
-		break;
+	//print(freqs);
+	vector<arbre> arbre_freqs = crear_arbres_freqs(freqs);
+
+	//Passos:
+		//1. Crear arbre de frequencies ordenat
+		//2. Agafar els dos primers valors i ficar-los ordenats
+		//3. Eliminar aquests elements
+		//4. Afegir l'arbre resultant al vector d'arbres.
+		//5. Repetir passos fins que solament quedi un arbre
+	while(arbre_freqs.size() > 1) {
+		arbre arbre1 = min(arbre_freqs[0], arbre_freqs[1]);
+		arbre arbre2 = max(arbre_freqs[0], arbre_freqs[1]);
+		arbre arrel(crear_arrel(arbre1, arbre2), arbre1, arbre2);
+		insertar_arbre_ordenat(arbre_freqs, arrel);
+		arbre_freqs.erase(arbre_freqs.begin(), arbre_freqs.begin()+2);
 	}
+
+	//print_a(arbre_freqs[0].arrel(), 0);
+	string s = "";
+	vector<string> cods(freqs.size());
+	codis(arbre_freqs[0].arrel(), cods, s);
+	taula_codis = cods;
+}
+
+void huffman::codis(arbre::iterador it, vector<string> &c, string s) {	
+	string aux(s);
+	if(it.fill_dret() and it.fill_esq()){
+		if (it.fill_esq()) codis(it.fill_esq(), c, s+'0');
+		//cout<<s<<endl;
+		if (it.fill_dret()) codis(it.fill_dret(), c, s+'1');
+		//cout<<s<<endl;
+	} else  {
+		c[(*it).first-1] = aux;
+	}
+}
+
+void huffman::insertar_arbre_ordenat(vector<arbre> &v, const arbre &a) {
+		vector<arbre> aux;	
+		bool insertat = false;
+		while(!insertat && !v.empty()) {
+			if((*v.back().arrel()).second > (*a.arrel()).second) {
+				aux.push_back(v.back());	
+				v.pop_back();
+			} else { 
+				if(((*v.back().arrel()).second == (*a.arrel()).second && 
+					(*v.back().arrel()).first < (*a.arrel()).first) ||
+					(*v.back().arrel()).second < (*a.arrel()).second) {
+					v.push_back(a);
+					insertat = true;
+				} else {
+					aux.push_back(v.back());
+					v.pop_back();				
+				}
+			}
+
+		}
+		if (v.empty()) {
+			v.push_back(a);
+		}
+		while (!aux.empty()) {
+			v.push_back(aux.back());
+			aux.pop_back();
+		}
+}
+
+vector<arbre> huffman::crear_arbres_freqs(const vector<elem> &freqs) {
+	vector<arbre> v_arbres;
+	for (nat i = 0; i < freqs.size(); i++) {
+		arbre a(freqs[i], arbre(), arbre());
+		insertar_arbre_ordenat(v_arbres, a);
+	}
+
+	return v_arbres;
 }
 
 elem huffman::crear_pair(nat first, nat second) throw(error) {
@@ -58,9 +95,6 @@ vector<elem> huffman::frequencies(const vector<nat> &seq) throw(){
 		}
 		i++;		
 	}
-
-//	print(freqs);
-	quicksort(freqs, 0, freqs.size());
 	return freqs;
 }
 
@@ -84,33 +118,22 @@ bool huffman::existeix(nat n, const vector<elem> &v) throw() {
 }
 
 void huffman::inserta(nat num, nat reps, vector<elem> &freqs) throw(){
-	elem elem = crear_pair(num, reps);
-	freqs.push_back(elem);
+	elem e = crear_pair(num, reps);
+	freqs.push_back(e);
 }
 
-
-//Canviar noms variables
-void huffman::quicksort(vector<elem>& A, int left, int right) throw () {
-	if(left >= right) return;
-	
-	int mig = left + (right - left) / 2;
-	if(A[mig].second != A[left].second) swap(A[mig], A[left]);
-	int migPoint = partition(A, left+1, right, A[left]);
-	if(A[left].second != A[migPoint].second) swap(A[left], A[migPoint]);
-	quicksort(A, left, migPoint);
-	quicksort(A, migPoint+1, right);
-
+arbre huffman::min(arbre e1, arbre e2) throw() {
+	return (*e1.arrel()).second <= (*e2.arrel()).second ? e1 : e2;
 }
 
-int huffman::partition(vector<elem> &A, int left, int right, elem who) throw() {
-	for(int i = left; i < right; i++) {
-		if(A[i].second <= who.second) {
-			swap(A[i], A[left]);
-			left++;
-		}
-	}
-	return left-1;
+arbre huffman::max(arbre e1, arbre e2) throw() {
+	return(*e2.arrel()).second >= (*e1.arrel()).second ? e2 : e1;
 }
+
+elem huffman::crear_arrel(arbre e1, arbre e2) throw() {
+	return crear_pair(std::min((*e1.arrel()).first, (*e2.arrel()).first), (*e1.arrel()).second + (*e2.arrel()).second);
+}
+
 
 //Borrar
 void huffman::print(const vector<elem> &v) {
@@ -127,4 +150,18 @@ void huffman::print_v(const vector<nat > &v) {
 		cout<<v[i]<<endl;
 	}
 	cout<<"]"<<endl;
+}
+
+void huffman::print_a(arbbin<elem>::iterador it, int indent) {
+	if (it) {
+    if (it.fill_dret()) print_a(it.fill_dret(), indent+4);
+    if (indent) cout<<std::setw(indent)<<' ';
+    if (it.fill_dret()) std::cout<<" /\n" << std::setw(indent) << ' ';
+		cout<<"("<<(*it).first<<":"<<(*it).second<<") "<<"\n"<<endl;
+    // cout<<*it<<"\n"<<endl;
+    if (it.fill_esq()) {
+       std::cout << std::setw(indent) << ' ' <<" \\\n";
+       print_a(it.fill_esq(), indent+4);
+    }
+  }
 }

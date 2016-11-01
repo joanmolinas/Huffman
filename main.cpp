@@ -32,18 +32,18 @@ int main() {
 	arb2.print(arb2.arrel(), 0);*/
 
 	vector<nat> seq;
-	seq.push_back(4);
-	seq.push_back(2);
-	seq.push_back(3);
-	seq.push_back(2);
-	seq.push_back(3);
 	seq.push_back(1);
+	seq.push_back(2);
+	seq.push_back(3);
+	seq.push_back(4);
+	seq.push_back(3);
+	//seq.push_back(3);
 	vector<string> taula_codis;
 	codi_huffman(seq, taula_codis);
-	
-
-
-
+	cout<<"Codis"<<endl;
+	for(nat i = 0; i < taula_codis.size(); i++) {
+		cout<<taula_codis[i]<<" ";
+	}
 
   return 0;
 }
