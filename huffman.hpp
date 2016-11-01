@@ -4,7 +4,6 @@
 
 #include <vector>
 #include <string>
-#include <iomanip> 
 #include "arbbin.hpp"
 
 #include <esin/error>
@@ -12,9 +11,6 @@
 
 using util::nat;
 using namespace std;
-
-typedef pair<nat, nat> elem;
-typedef arbbin<elem> arbre;
 
 namespace huffman {
 

@@ -38,8 +38,7 @@ ostream& operator<=(ostream& os, const bool b) {
 template <typename T>
 void imprimeix_vector(const vector<T>& V, const char sep = ' ', ostream& os = std::cout) {
   for (unsigned int i = 0; i < V.size(); ++i) {
-    os << V[i];
-	if(i != V.size()-1) os<<sep; 
+    os << V[i] << sep;
   }
   os << endl;
 }

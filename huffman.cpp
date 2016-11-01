@@ -1,4 +1,8 @@
 #include "huffman.hpp"
+#include <utility>
+
+typedef pair<nat, nat> elem;
+typedef arbbin<elem> arbre;
 
 bool existeix(nat n, const vector<elem> &v) throw() {
 	bool trobat = false;	
@@ -97,15 +101,6 @@ void codis(arbre::iterador it, vector<string> &c, string s) {
 	}
 }
 
-
-arbre min(arbre e1, arbre e2) throw() {
-	return (*e1.arrel()).second <= (*e2.arrel()).second ? e1 : e2;
-}
-
-arbre max(arbre e1, arbre e2) throw() {
-	return(*e2.arrel()).second >= (*e1.arrel()).second ? e2 : e1;
-}
-
 elem crear_arrel(arbre e1, arbre e2) throw() {
 	return crear_pair(std::min((*e1.arrel()).first, (*e2.arrel()).first), (*e1.arrel()).second + (*e2.arrel()).second);
 }
@@ -123,8 +118,8 @@ void huffman::codi_huffman(const vector<nat>& seq, vector<string>& taula_codis) 
 		//5. Repetir passos fins que solament quedi un arbre
 
 	while(arbre_freqs.size() > 1) {
-		arbre arbre1 = min(arbre_freqs[0], arbre_freqs[1]);
-		arbre arbre2 = max(arbre_freqs[0], arbre_freqs[1]);
+		arbre arbre1 = arbre_freqs[0];
+		arbre arbre2 = arbre_freqs[1];
 		arbre arrel(crear_arrel(arbre1, arbre2), arbre1, arbre2);
 		insertar_arbre_ordenat(arbre_freqs, arrel);
 		arbre_freqs.erase(arbre_freqs.begin(), arbre_freqs.begin()+2);
