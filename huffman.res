@@ -23,7 +23,7 @@
 ###!      4.9 el primer, segon i quart elements son iguals [k = 2]: 1 1 2 1
 ###!      4.10 el primer, tercer i quart elements son iguals [k = 2]: 1 2 1 1
 ###!      4.11 el segon, tercer i quart elements son iguals [k = 2]: 1 2 2 2
-###!      4.12 el primer i el segon elements son iguals,
+###!      4.12 el primer i el segon elements son iguals, 
 ###!           i el tercer i el quart tambe [k = 2]: 1 1 2 2
 ###!      4.13 el primer i el tercer elements son iguals,
 ###!           i el segon i el quart tambe [k = 2]: 1 2 1 2
@@ -99,7 +99,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s2A
 0 1
-##0 1
+##0 1 
 ###!
 #s2A destroy
 ###!
@@ -114,7 +114,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s2Z
 
-##
+## 
 ###!**** LA RESPOSTA ANTERIOR DEL METODE HUFFMAN ES UN VECTOR
 ###!**** DE CODIS AMB UN UNIC ELEMENT: LA CADENA BUIDA ""
 ###!
@@ -135,7 +135,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s3A
 10 11 0
-##10 11 0
+##10 11 0 
 ###!
 #s3A destroy
 ###!
@@ -151,7 +151,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s3B
 1 0
-##1 0
+##1 0 
 ###!
 #s3B destroy s3B
 ###!
@@ -167,7 +167,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s3C
 1 0
-##1 0
+##1 0 
 ###!
 #s3C destroy
 ###!
@@ -183,7 +183,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s3D
 0 1
-##0 1
+##0 1 
 ###!
 #s3D destroy
 ###!
@@ -199,7 +199,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s3Z
 
-##
+## 
 ###!**** LA RESPOSTA ANTERIOR DEL METODE HUFFMAN ES UN VECTOR
 ###!**** DE CODIS AMB UN UNIC ELEMENT: LA CADENA BUIDA ""
 ###!
@@ -223,7 +223,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4A
 00 01 10 11
-##00 01 10 11
+##00 01 10 11 
 ###!
 #s4A destroy
 ###!
@@ -240,7 +240,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4B
 0 10 11
-##0 10 11
+##0 10 11 
 ###!
 #s4B destroy
 ###!
@@ -257,7 +257,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4C
 0 10 11
-##0 10 11
+##0 10 11 
 ###!
 #s4C destroy
 ###!
@@ -274,7 +274,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4D
 0 10 11
-##0 10 11
+##0 10 11 
 ###!
 #s4D destroy
 ###!
@@ -291,7 +291,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4E
 00 1 01
-##00 1 01
+##00 1 01 
 ###!
 #s4E destroy
 ###!
@@ -308,7 +308,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4F
 00 1 01
-##00 1 01
+##00 1 01 
 ###!
 #s4F destroy
 ###!
@@ -325,7 +325,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4G
 00 01 1
-##00 01 1
+##00 01 1 
 ###!
 #s4G destroy
 ###!
@@ -342,7 +342,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4H
 1 0
-##1 0
+##1 0 
 ###!
 #s4H destroy
 ###!
@@ -359,7 +359,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4I
 1 0
-##1 0
+##1 0 
 ###!
 #s4I destroy
 ###!
@@ -376,7 +376,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4J
 1 0
-##1 0
+##1 0 
 ###!
 #s4J destroy
 ###!
@@ -393,7 +393,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4K
 0 1
-##0 1
+##0 1 
 ###!
 #s4K destroy
 ###!
@@ -411,9 +411,9 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4L
 0 1
-##0 1
+##0 1 
 ###!
-#s4L destroy
+#s4L destroy 
 ###!
 ###!
 ###!----------------------------------------------------------------------
@@ -429,7 +429,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4M
 0 1
-##0 1
+##0 1 
 ###!
 #s4M destroy
 ###!
@@ -447,7 +447,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4N
 0 1
-##0 1
+##0 1 
 ###!
 #s4N destroy
 ###!
@@ -464,7 +464,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s4Z
 
-##
+## 
 ###!**** LA RESPOSTA ANTERIOR DEL METODE HUFFMAN ES UN VECTOR
 ###!**** DE CODIS AMB UN UNIC ELEMENT: LA CADENA BUIDA ""
 ###!
@@ -489,7 +489,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5A
 110 111 00 01 10
-##110 111 00 01 10
+##110 111 00 01 10 
 ###!
 #s5A destroy
 ###!
@@ -507,7 +507,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5B
 11 00 01 10
-##11 00 01 10
+##11 00 01 10 
 ###!
 #s5B destroy
 ###!
@@ -525,7 +525,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5C
 110 0 111 10
-##110 0 111 10
+##110 0 111 10 
 ###!
 #s5C destroy
 ###!
@@ -543,7 +543,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5D
 110 111 0 10
-##110 111 0 10
+##110 111 0 10 
 ###!
 #s5D destroy
 ###!
@@ -561,7 +561,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5E
 110 111 10 0
-##110 111 10 0
+##110 111 10 0 
 ###!
 #s5E destroy
 ###!
@@ -579,7 +579,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5F
 1 00 01
-##1 00 01
+##1 00 01 
 ###!
 #s5F destroy
 ###!
@@ -597,7 +597,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5G
 00 1 01
-##00 1 01
+##00 1 01 
 ###!
 #s5G destroy
 ###!
@@ -615,7 +615,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5H
 00 01 1
-##00 01 1
+##00 01 1 
 ###!
 #s5H destroy
 ###!
@@ -634,7 +634,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5I
 11 0 10
-##11 0 10
+##11 0 10 
 ###!
 #s5I destroy
 ###!
@@ -653,7 +653,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5J
 11 10 0
-##11 10 0
+##11 10 0 
 ###!
 #s5J destroy
 ###!
@@ -672,7 +672,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5K
 10 11 0
-##10 11 0
+##10 11 0 
 ###!
 #s5K destroy
 ###!
@@ -691,7 +691,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5L
 1 0
-##1 0
+##1 0 
 ###!
 #s5L destroy
 ###!
@@ -710,7 +710,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5M
 0 1
-##0 1
+##0 1 
 ###!
 #s5M destroy
 ###!
@@ -729,7 +729,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5N
 1 0
-##1 0
+##1 0 
 ###!
 #s5N destroy
 ###!
@@ -748,7 +748,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5O
 0 1
-##0 1
+##0 1 
 ###!
 #s5O destroy
 ###!
@@ -766,7 +766,7 @@ Error::huffman:21:Sequencia massa curta
 ###!
 #huffman s5Z
 
-##
+## 
 ###!**** LA RESPOSTA ANTERIOR DEL METODE HUFFMAN ES UN VECTOR
 ###!**** DE CODIS AMB UN UNIC ELEMENT: LA CADENA BUIDA ""
 ###!
